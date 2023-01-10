@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import EmailForm from "../EmailForm/EmailForm";
 
 const SingleEvent = ({ image, description, title }) => (
     <div>
@@ -9,8 +9,7 @@ const SingleEvent = ({ image, description, title }) => (
 
         <p>{description}</p>
 
-        <input type="email" name="email" />
-        <button>submit</button>
+        <EmailForm />
     </div>
 );
 
