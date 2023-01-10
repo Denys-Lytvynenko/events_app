@@ -1,20 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 import icon from "/public/events-app-favicon.png";
 
 const Header = () => (
     <header>
-        <nav>
-            <Image src={icon} alt="logo" />
+        <div>
+            <div className="topNav">
+                <Image src={icon} alt="logo" />
 
-            <div>
-                <Link href="/">Home</Link>
-                <Link href="/events">Events</Link>
-                <Link href="/about-us">AboutUs</Link>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link href="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link href="/events">Events</Link>
+                        </li>
+                        <li>
+                            <Link href="/about-us">AboutUs</Link>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-        </nav>
+
+            <p className="title">Some title</p>
+        </div>
     </header>
 );
 

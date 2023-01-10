@@ -1,19 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const HomePage = ({ data }) => (
-    <main>
+    <div className="home_body">
         {data.map(({ id, title, description, image }) => (
-            <Link href={`/events/${id}`} key={id}>
-                <Image src={image} alt={title} width={200} height={200} />
+            <Link href={`/events/${id}`} key={id} className="card">
+                <div className="image">
+                    <Image src={image} alt={title} width={500} height={300} />
+                </div>
 
-                <h2>{title}</h2>
-
-                <p>{description}</p>
+                <div className="content">
+                    <h2>{title}</h2>
+                    <p>{description}</p>
+                </div>
             </Link>
         ))}
-    </main>
+    </div>
 );
 
 export default HomePage;
