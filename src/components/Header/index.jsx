@@ -6,7 +6,7 @@ import icon from "/public/events-app-favicon.png";
 const Header = () => (
     <header>
         <div>
-            <div className="topNav">
+            <div>
                 <Image src={icon} alt="logo" />
 
                 <nav>
@@ -24,7 +24,7 @@ const Header = () => (
                 </nav>
             </div>
 
-            <p className="title">Some title</p>
+            <p>Some title</p>
         </div>
     </header>
 );
