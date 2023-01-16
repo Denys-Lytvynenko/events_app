@@ -23,6 +23,7 @@ const HomePage = ({ data }) => (
                 >
                     Choose your event
                 </Typography>
+
                 <Typography
                     variant="h5"
                     align="center"
@@ -32,31 +33,39 @@ const HomePage = ({ data }) => (
                     Discover and select event you want to visit and send you
                     email for registration.
                 </Typography>
+
                 <Stack
                     sx={{ pt: 4 }}
                     direction="row"
                     spacing={2}
                     justifyContent="center"
                 >
-                    <NextLink href="/events" style={linkStyle}>
-                        <Button variant="contained">Go to events</Button>
-                    </NextLink>
+                    <Button variant="contained" href="/events">
+                        Go to events
+                    </Button>
                 </Stack>
             </Container>
         </Box>
 
-        {data.map(({ id, title, description, image }) => (
-            <NextLink href={`/events/${id}`} key={id}>
-                <div>
-                    <Image src={image} alt={title} width={500} height={300} />
-                </div>
+        <Container maxWidth="lg">
+            {data.map(({ id, title, description, image }) => (
+                <NextLink href={`/events/${id}`} key={id}>
+                    <div>
+                        <Image
+                            src={image}
+                            alt={title}
+                            width={500}
+                            height={300}
+                        />
+                    </div>
 
-                <div>
-                    <h2>{title}</h2>
-                    <p>{description}</p>
-                </div>
-            </NextLink>
-        ))}
+                    <div>
+                        <h2>{title}</h2>
+                        <p>{description}</p>
+                    </div>
+                </NextLink>
+            ))}
+        </Container>
     </div>
 );
 

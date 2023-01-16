@@ -6,6 +6,8 @@ import { forwardRef } from "react";
 
 import Footer from "../Footer";
 import Header from "../Header";
+import { Container, Toolbar } from "@mui/material";
+import ScrollTop from "../ScrollTop/ScrollTop";
 
 const LinkBehaviour = forwardRef(function LinkBehaviour(props, ref) {
     return <NextLink ref={ref} {...props} />;
@@ -29,7 +31,7 @@ const theme = createTheme({
     },
 });
 
-const MainLayout = ({ children }) => (
+const MainLayout = props => (
     <ThemeProvider theme={theme}>
         <CssBaseline />
         <Head>
@@ -45,9 +47,14 @@ const MainLayout = ({ children }) => (
         </Head>
 
         <Header />
-        <main>{children}</main>
+
+        <Container component="main" sx={{ padding: "24px" }}>
+            {props.children}
+        </Container>
+
         <Footer />
+
+        <ScrollTop {...props} />
     </ThemeProvider>
 );
-
 export default MainLayout;

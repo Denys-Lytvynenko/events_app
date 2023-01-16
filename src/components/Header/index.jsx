@@ -8,6 +8,8 @@ import {
     ListItem,
     ListItemButton,
     ListItemText,
+    Slide,
+    useScrollTrigger,
 } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -16,7 +18,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import NextLink from "next/link";
-import { useMemo, useState } from "react";
+import { cloneElement, useMemo, useState } from "react";
 
 import { linkStyle } from "../../../styles/style.js";
 
@@ -29,6 +31,16 @@ const navItems = [
     { name: "Events", href: "/events" },
     { name: "About us", href: "/about-us" },
 ];
+
+const HideOnScroll = ({ children }) => {
+    const trigger = useScrollTrigger();
+
+    return (
+        <Slide appear={false} direction="down" in={!trigger}>
+            {children}
+        </Slide>
+    );
+};
 
 const Header = props => {
     const { window } = props;
@@ -73,47 +85,49 @@ const Header = props => {
         window !== undefined ? () => window().document.body : undefined;
 
     return (
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: "flex" }} component="header">
             <CssBaseline />
 
-            <AppBar component="nav">
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        edge="start"
-                        onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: "none" } }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
+            <HideOnScroll {...props}>
+                <AppBar component="nav">
+                    <Toolbar>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            edge="start"
+                            onClick={handleDrawerToggle}
+                            sx={{ mr: 2, display: { sm: "none" } }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
 
-                    <Typography
-                        variant="h6"
-                        component="div"
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: "none", sm: "block" },
-                        }}
-                    >
-                        <NextLink href="/" style={linkStyle}>
-                            Events app
-                        </NextLink>
-                    </Typography>
+                        <Typography
+                            variant="h6"
+                            component="div"
+                            sx={{
+                                flexGrow: 1,
+                                display: { xs: "none", sm: "block" },
+                            }}
+                        >
+                            <NextLink href="/" style={linkStyle}>
+                                Events app
+                            </NextLink>
+                        </Typography>
 
-                    <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                        {navItems.map(({ name, href }) => (
-                            <Button
-                                sx={{ color: "#fff" }}
-                                key={name}
-                                href={href}
-                            >
-                                {name}
-                            </Button>
-                        ))}
-                    </Box>
-                </Toolbar>
-            </AppBar>
+                        <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                            {navItems.map(({ name, href }) => (
+                                <Button
+                                    sx={{ color: "#fff" }}
+                                    key={name}
+                                    href={href}
+                                >
+                                    {name}
+                                </Button>
+                            ))}
+                        </Box>
+                    </Toolbar>
+                </AppBar>
+            </HideOnScroll>
 
             <Box component="nav">
                 <Drawer
@@ -135,6 +149,8 @@ const Header = props => {
                     {drawer}
                 </Drawer>
             </Box>
+
+            <Toolbar id="back-to-top-anchor" />
         </Box>
     );
 };
