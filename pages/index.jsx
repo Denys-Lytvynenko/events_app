@@ -1,5 +1,3 @@
-import Head from "next/head";
-
 import HomePage from "../src/components/HomePage";
 
 const Home = ({ data }) => <HomePage data={data} />;
