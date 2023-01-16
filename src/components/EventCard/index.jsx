@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 
 const EventCard = ({ href, src, title, description }) => (
-    <Card sx={{ maxWidth: 345, height: "100%" }}>
+    <Card sx={{ maxWidth: 345, minWidth: 320, height: "100%" }}>
         <CardActionArea href={href} sx={{ height: "100%" }}>
             <CardMedia component="img" height="140" image={src} alt={title} />
 
@@ -16,9 +16,11 @@ const EventCard = ({ href, src, title, description }) => (
                     {title}
                 </Typography>
 
-                <Typography variant="body2" color="text.secondary">
-                    {description}
-                </Typography>
+                {description && (
+                    <Typography variant="body2" color="text.secondary">
+                        {description}
+                    </Typography>
+                )}
             </CardContent>
         </CardActionArea>
     </Card>

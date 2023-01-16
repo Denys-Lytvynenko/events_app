@@ -9,7 +9,8 @@ import {
 } from "@mui/material";
 
 import { navigation } from "../../navigation";
-import EventCard from "../EventCard/EventCard";
+
+import EventCard from "../EventCard";
 
 const HomePage = ({ data }) => (
     <>
@@ -59,7 +60,14 @@ const HomePage = ({ data }) => (
         <Container maxWidth="lg">
             <Grid container spacing={2}>
                 {data.map(({ id, title, description, image }) => (
-                    <Grid xs={12} md={4} key={id} item>
+                    <Grid
+                        xs={12}
+                        md={6}
+                        lg={4}
+                        key={id}
+                        item
+                        sx={{ display: "flex", justifyContent: "center" }}
+                    >
                         <EventCard
                             href={`${navigation.events.href}/${id}`}
                             src={image}

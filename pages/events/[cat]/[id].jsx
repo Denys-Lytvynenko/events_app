@@ -6,7 +6,7 @@ const EventPage = ({ data: { title, description, image } }) => (
 
 export default EventPage;
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
     const data = await import("/data/data.json");
     const { allEvents } = data;
 
@@ -21,9 +21,9 @@ export async function getStaticPaths() {
         paths: allPaths,
         fallback: false,
     };
-}
+};
 
-export async function getStaticProps(context) {
+export const getStaticProps = async context => {
     const { allEvents } = await import("/data/data.json");
 
     const eventData = allEvents.find(
@@ -37,4 +37,4 @@ export async function getStaticProps(context) {
             data: eventData,
         },
     };
-}
+};
