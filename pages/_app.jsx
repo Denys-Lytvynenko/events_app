@@ -1,14 +1,14 @@
-import MainLayout from "../src/components/Layout/MainLayout";
+import MainLayout from "../src/components/MainLayout";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-export default function App({ Component, pageProps }) {
-    return (
-        <MainLayout>
-            <Component {...pageProps} />
-        </MainLayout>
-    );
-}
+const App = ({ Component, pageProps }) => (
+    <MainLayout>
+        <Component {...pageProps} />
+    </MainLayout>
+);
+
+export default App;

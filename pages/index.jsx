@@ -4,7 +4,7 @@ const Home = ({ data }) => <HomePage data={data} />;
 
 export default Home;
 
-export async function getServerSideProps() {
+export const getServerSideProps = async () => {
     const { events_categories } = await import("/data/data.json");
 
     return {
@@ -12,4 +12,4 @@ export async function getServerSideProps() {
             data: events_categories,
         },
     };
-}
+};

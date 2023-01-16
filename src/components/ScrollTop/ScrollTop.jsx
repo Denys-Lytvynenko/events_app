@@ -1,7 +1,7 @@
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Box, Fab, Fade, useScrollTrigger } from "@mui/material";
 
-const ScrollTop = ({ children }) => {
+const ScrollTop = () => {
     const trigger = useScrollTrigger({
         disableHysteresis: true,
         threshold: 100,

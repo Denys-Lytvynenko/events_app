@@ -1,11 +1,18 @@
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import Image from "next/image";
-import NextLink from "next/link";
+import {
+    Box,
+    Button,
+    Container,
+    Divider,
+    Grid,
+    Stack,
+    Typography,
+} from "@mui/material";
 
-import { linkStyle } from "../../../styles/style";
+import { navigation } from "../../navigation";
+import EventCard from "../EventCard/EventCard";
 
 const HomePage = ({ data }) => (
-    <div>
+    <>
         <Box
             sx={{
                 bgcolor: "background.paper",
@@ -40,33 +47,30 @@ const HomePage = ({ data }) => (
                     spacing={2}
                     justifyContent="center"
                 >
-                    <Button variant="contained" href="/events">
+                    <Button variant="contained" href={navigation.events.href}>
                         Go to events
                     </Button>
                 </Stack>
             </Container>
         </Box>
 
-        <Container maxWidth="lg">
-            {data.map(({ id, title, description, image }) => (
-                <NextLink href={`/events/${id}`} key={id}>
-                    <div>
-                        <Image
-                            src={image}
-                            alt={title}
-                            width={500}
-                            height={300}
-                        />
-                    </div>
+        <Divider sx={{ mb: "48px" }} />
 
-                    <div>
-                        <h2>{title}</h2>
-                        <p>{description}</p>
-                    </div>
-                </NextLink>
-            ))}
+        <Container maxWidth="lg">
+            <Grid container spacing={2}>
+                {data.map(({ id, title, description, image }) => (
+                    <Grid xs={6} md={4} key={id} item>
+                        <EventCard
+                            href={`${navigation.events.href}/${id}`}
+                            src={image}
+                            title={title}
+                            description={description}
+                        />
+                    </Grid>
+                ))}
+            </Grid>
         </Container>
-    </div>
+    </>
 );
 
 export default HomePage;
