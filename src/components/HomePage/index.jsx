@@ -59,7 +59,7 @@ const HomePage = ({ data }) => (
         <Container maxWidth="lg">
             <Grid container spacing={2}>
                 {data.map(({ id, title, description, image }) => (
-                    <Grid xs={6} md={4} key={id} item>
+                    <Grid xs={12} md={4} key={id} item>
                         <EventCard
                             href={`${navigation.events.href}/${id}`}
                             src={image}
