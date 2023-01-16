@@ -1,25 +1,33 @@
-import { Box, Typography, Divider } from "@mui/material";
+import { Box, Typography, Divider, Container } from "@mui/material";
 import Copyright from "../Copyright";
 
 const Footer = () => (
     <>
-        <Divider sx={{ mt: "48px" }} />
+        <Divider />
 
-        <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
-            <Typography variant="h6" align="center" gutterBottom>
-                Events app
-            </Typography>
-
-            <Typography
-                variant="subtitle1"
-                align="center"
-                color="text.secondary"
-                component="p"
+        <Box
+            sx={{
+                bgcolor: "background.paper",
+                p: 2,
+                display: "flex",
+                justifyContent: "center",
+            }}
+            component="footer"
+        >
+            <Container
+                sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                }}
+                maxWidth="lg"
             >
-                Subscribe to your favorite event
-            </Typography>
+                <Typography variant="h6" align="center" gutterBottom>
+                    Events app
+                </Typography>
 
-            <Copyright />
+                <Copyright />
+            </Container>
         </Box>
     </>
 );

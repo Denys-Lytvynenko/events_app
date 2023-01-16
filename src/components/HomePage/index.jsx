@@ -54,7 +54,7 @@ const HomePage = ({ data }) => (
             </Container>
         </Box>
 
-        <Divider sx={{ mb: "48px" }} />
+        <Divider sx={{ mb: "24px" }} />
 
         <Container maxWidth="lg">
             <Grid container spacing={2}>
