@@ -16,7 +16,7 @@ const HomePage = ({ data }) => (
         <Box
             sx={{
                 bgcolor: "background.paper",
-                pt: 8,
+                pt: 6,
                 pb: 6,
             }}
         >

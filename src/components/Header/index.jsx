@@ -18,50 +18,48 @@ const Header = () => {
     const handleDrawerToggle = () => setMobileOpen(prevState => !prevState);
 
     return (
-        <>
-            <Box sx={{ display: "flex" }} component="header">
-                <HideOnScroll>
-                    <AppBar component="nav">
-                        <Toolbar>
-                            <MobileDrawer
-                                mobileOpen={mobileOpen}
-                                handleDrawerToggle={handleDrawerToggle}
-                            />
+        <Box sx={{ display: "flex" }} component="header">
+            <HideOnScroll>
+                <AppBar component="nav">
+                    <Toolbar>
+                        <MobileDrawer
+                            mobileOpen={mobileOpen}
+                            handleDrawerToggle={handleDrawerToggle}
+                        />
 
-                            <Typography
-                                variant="h6"
-                                component="div"
-                                sx={{
-                                    flexGrow: 1,
-                                    display: { xs: "none", sm: "block" },
-                                }}
+                        <Typography
+                            variant="h6"
+                            component="div"
+                            sx={{
+                                flexGrow: 1,
+                                display: { xs: "none", sm: "block" },
+                            }}
+                        >
+                            <NextLink
+                                href={navigation.home.href}
+                                style={linkStyle}
                             >
-                                <NextLink
-                                    href={navigation.home.href}
-                                    style={linkStyle}
-                                >
-                                    Events app
-                                </NextLink>
-                            </Typography>
+                                Events app
+                            </NextLink>
+                        </Typography>
 
-                            <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                                {navItems.map(({ name, href }, index) => (
-                                    <Button
-                                        sx={{ color: "#fff" }}
-                                        key={index}
-                                        href={href}
-                                    >
-                                        {name}
-                                    </Button>
-                                ))}
-                            </Box>
-                        </Toolbar>
-                    </AppBar>
-                </HideOnScroll>
-            </Box>
+                        <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                            {navItems.map(({ name, href }, index) => (
+                                <Button
+                                    sx={{ color: "#fff" }}
+                                    key={index}
+                                    href={href}
+                                >
+                                    {name}
+                                </Button>
+                            ))}
+                        </Box>
+                    </Toolbar>
+                </AppBar>
+            </HideOnScroll>
 
             <Toolbar id="back-to-top-anchor" />
-        </>
+        </Box>
     );
 };
 

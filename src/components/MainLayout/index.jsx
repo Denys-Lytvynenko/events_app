@@ -27,7 +27,10 @@ const MainLayout = ({ children }) => (
 
         <Header />
 
-        <Container component="main" sx={{ padding: "24px" }}>
+        <Container
+            component="main"
+            sx={{ padding: "0 24px 24px", flexGrow: 1 }}
+        >
             {children}
         </Container>
 
