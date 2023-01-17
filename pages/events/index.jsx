@@ -1,6 +1,6 @@
-import Events from "../../src/components/Events/Events";
+import CityOfEventPage from "../../src/components/Events/CityOfEventPage";
 
-const EventsPage = ({ data }) => <Events data={data} />;
+const EventsPage = ({ data }) => <CityOfEventPage data={data} />;
 
 export default EventsPage;
 

@@ -1,12 +1,12 @@
-import CategoryEvent from "../../../src/components/Events/CategoryEvent";
+import EventsInCityPage from "../../../src/components/Events/EventsInCityPage";
 
 const EventsCategoryPage = ({ data, pageName }) => (
-    <CategoryEvent data={data} pageName={pageName} />
+    <EventsInCityPage data={data} pageName={pageName} />
 );
 
 export default EventsCategoryPage;
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
     const { events_categories } = await import("/data/data.json");
 
     const allPaths = events_categories.map(({ id }) => ({
@@ -19,9 +19,9 @@ export async function getStaticPaths() {
         paths: allPaths,
         fallback: false,
     };
-}
+};
 
-export async function getStaticProps(context) {
+export const getStaticProps = async context => {
     const id = context?.params.cat;
     const { allEvents } = await import("/data/data.json");
 
@@ -30,4 +30,4 @@ export async function getStaticProps(context) {
     return {
         props: { data, pageName: id },
     };
-}
+};

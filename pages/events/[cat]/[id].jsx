@@ -1,7 +1,7 @@
-import SingleEvent from "../../../src/components/Events/SingleEvent";
+import SingleEventPage from "../../../src/components/Events/SingleEventPage";
 
 const EventPage = ({ data: { title, description, image } }) => (
-    <SingleEvent title={title} description={description} image={image} />
+    <SingleEventPage title={title} description={description} image={image} />
 );
 
 export default EventPage;
