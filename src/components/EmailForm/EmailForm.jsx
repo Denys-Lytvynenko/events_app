@@ -1,4 +1,4 @@
-import { Button, Input } from "@mui/material";
+import { Box, Button, Input, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 
@@ -6,7 +6,8 @@ const EmailForm = () => {
     const inputEmail = useRef();
     const router = useRouter();
 
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = useState({ messageText: "", type: "" });
+
     const onSubmit = async event => {
         event.preventDefault();
 
@@ -15,7 +16,11 @@ const EmailForm = () => {
         const validRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
         if (!emailValue.match(validRegex)) {
-            setMessage("Please introduce correct email address");
+            setMessage({
+                messageText: "Please introduce correct email address",
+                type: "error",
+            });
+
             return;
         }
 
@@ -28,33 +33,54 @@ const EmailForm = () => {
                 body: JSON.stringify({ email: emailValue, eventId }),
             });
 
-            if (!response.ok) throw new Error(`ERROR: ${response.status}`);
-
             const data = await response.json();
 
-            setMessage(data.message);
+            if (!response.ok) throw new Error(data.message);
+
+            setMessage({ messageText: data.message, type: "success" });
+
             inputEmail.current.value = "";
         } catch (error) {
             console.log("Error: ", error);
+            setMessage({
+                messageText: error.message,
+                type: "error",
+            });
         }
     };
 
     return (
-        <form onSubmit={onSubmit}>
-            <label htmlFor="email">Get Register for this event</label>
-            <div>
+        <form
+            onSubmit={onSubmit}
+            style={{ display: "flex", flexDirection: "column", gap: 16 }}
+        >
+            <Box
+                component="div"
+                sx={{
+                    display: "flex",
+                    flexDirection: { xs: "column", md: "row" },
+                    gap: 2,
+                }}
+            >
                 <Input
                     name="email"
                     id="email"
                     placeholder="Please enter your email"
                     inputRef={inputEmail}
+                    sx={{ flexGrow: 1 }}
                 />
 
                 <Button type="submit" variant="contained">
                     Submit
                 </Button>
-            </div>
-            <span>{message}</span>
+            </Box>
+
+            <Typography
+                component="span"
+                color={message.type === "error" ? "red" : "green"}
+            >
+                {message.messageText}
+            </Typography>
         </form>
     );
 };

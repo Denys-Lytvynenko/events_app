@@ -1,23 +1,55 @@
-import { Box } from "@mui/material";
+import { Box, Button, Container } from "@mui/material";
+import { useState } from "react";
 
-import EmailForm from "../EmailForm/EmailForm";
+import EventRegistrationModal from "../EventRegistrationModal";
 import PageTitleBlock from "../PageTitleBlock";
 
-const SingleEventPage = ({ image, description, title }) => (
-    <>
-        <PageTitleBlock title={title} description={description} />
+const SingleEventPage = ({ image, description, title }) => {
+    const [open, setOpen] = useState(false);
 
-        <Box
-            component="img"
-            sx={{
-                width: "100%",
-            }}
-            alt={title}
-            src={image}
-        />
+    const toggleModal = () => setOpen(prev => !prev);
 
-        <EmailForm />
-    </>
-);
+    return (
+        <Container>
+            <Box
+                component="div"
+                sx={{
+                    display: "flex",
+                    flexDirection: { xs: "column", md: "row" },
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                }}
+            >
+                <Box sx={{ flexShrink: 1 }}>
+                    <Box
+                        component="img"
+                        alt={title}
+                        src={image}
+                        sx={{ width: "100%", aspectRatio: "3/2" }}
+                    />
+                </Box>
 
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        flexGrow: 1,
+                        alignItems: "center",
+                    }}
+                >
+                    <PageTitleBlock title={title} description={description} />
+
+                    <Button onClick={toggleModal} variant="contained">
+                        register on event
+                    </Button>
+
+                    <EventRegistrationModal
+                        open={open}
+                        toggleModal={toggleModal}
+                    />
+                </Box>
+            </Box>
+        </Container>
+    );
+};
 export default SingleEventPage;
