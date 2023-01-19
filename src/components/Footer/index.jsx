@@ -1,6 +1,6 @@
 import { Box, Typography, Divider, Container } from "@mui/material";
 
-import Copyright from "../Copyright";
+import Copyright from "./Copyright";
 
 const Footer = () => (
     <>

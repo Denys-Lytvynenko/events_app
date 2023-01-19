@@ -78,6 +78,7 @@ const EmailForm = () => {
             <Typography
                 component="span"
                 color={message.type === "error" ? "red" : "green"}
+                sx={{ minHeight: "1rem" }}
             >
                 {message.messageText}
             </Typography>

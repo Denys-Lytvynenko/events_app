@@ -1,4 +1,12 @@
-import { Backdrop, Box, Divider, Fade, Modal, Typography } from "@mui/material";
+import {
+    Backdrop,
+    Box,
+    Container,
+    Divider,
+    Fade,
+    Modal,
+    Typography,
+} from "@mui/material";
 import React from "react";
 
 const style = {
@@ -11,6 +19,9 @@ const style = {
     borderRadius: "10px",
     boxShadow: 24,
     p: 3,
+    display: "flex",
+    flexDirection: "column",
+    gap: 2,
 };
 
 const ModalWrapper = ({ open, toggleModal, title, description, children }) => (
@@ -32,15 +43,12 @@ const ModalWrapper = ({ open, toggleModal, title, description, children }) => (
                 </Typography>
 
                 {description && (
-                    <Typography
-                        id="transition-modal-description"
-                        sx={{ mt: 2 }}
-                    >
+                    <Typography id="transition-modal-description">
                         {description}
                     </Typography>
                 )}
 
-                {children}
+                <Box>{children}</Box>
             </Box>
         </Fade>
     </Modal>

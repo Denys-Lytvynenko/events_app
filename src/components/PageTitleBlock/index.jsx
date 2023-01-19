@@ -15,6 +15,12 @@ const PageTitleBlock = ({ title, description, children }) => (
                 align="center"
                 color="text.primary"
                 gutterBottom
+                sx={{
+                    fontSize: {
+                        xs: "1.75rem",
+                        md: "3.75rem",
+                    },
+                }}
             >
                 {title}
             </Typography>
@@ -24,6 +30,12 @@ const PageTitleBlock = ({ title, description, children }) => (
                 align="center"
                 color="text.secondary"
                 paragraph
+                sx={{
+                    fontSize: {
+                        xs: "1rem",
+                        md: "1.75rem",
+                    },
+                }}
             >
                 {description}
             </Typography>
