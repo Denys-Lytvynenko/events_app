@@ -27,7 +27,15 @@ const MainLayout = ({ children }) => (
 
         <Header />
 
-        <Container component="main" sx={{ padding: 2, flexGrow: 1 }}>
+        <Container
+            component="main"
+            sx={{
+                padding: 2,
+                flexGrow: 1,
+                display: "flex",
+                flexDirection: "column",
+            }}
+        >
             {children}
         </Container>
 

@@ -10,46 +10,42 @@ const SingleEventPage = ({ image, description, title }) => {
     const toggleModal = () => setOpen(prev => !prev);
 
     return (
-        <Container>
+        <Box
+            component="div"
+            sx={{
+                display: "flex",
+                flexDirection: { xs: "column", md: "row" },
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexGrow: 1,
+            }}
+        >
+            <Box sx={{ flexShrink: 1 }}>
+                <Box
+                    component="img"
+                    alt={title}
+                    src={image}
+                    sx={{ width: "100%", aspectRatio: "3/2" }}
+                />
+            </Box>
+
             <Box
-                component="div"
                 sx={{
                     display: "flex",
-                    flexDirection: { xs: "column", md: "row" },
-                    justifyContent: "space-between",
+                    flexDirection: "column",
+                    flexGrow: 1,
                     alignItems: "center",
                 }}
             >
-                <Box sx={{ flexShrink: 1 }}>
-                    <Box
-                        component="img"
-                        alt={title}
-                        src={image}
-                        sx={{ width: "100%", aspectRatio: "3/2" }}
-                    />
-                </Box>
+                <PageTitleBlock title={title} description={description} />
 
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        flexGrow: 1,
-                        alignItems: "center",
-                    }}
-                >
-                    <PageTitleBlock title={title} description={description} />
+                <Button onClick={toggleModal} variant="contained">
+                    register on event
+                </Button>
 
-                    <Button onClick={toggleModal} variant="contained">
-                        register on event
-                    </Button>
-
-                    <EventRegistrationModal
-                        open={open}
-                        toggleModal={toggleModal}
-                    />
-                </Box>
+                <EventRegistrationModal open={open} toggleModal={toggleModal} />
             </Box>
-        </Container>
+        </Box>
     );
 };
 export default SingleEventPage;
