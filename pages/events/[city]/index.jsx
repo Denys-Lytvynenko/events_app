@@ -11,7 +11,7 @@ export const getStaticPaths = async () => {
 
     const allPaths = events_categories.map(({ id }) => ({
         params: {
-            cat: id.toString(),
+            city: id.toString(),
         },
     }));
 
@@ -22,7 +22,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async context => {
-    const id = context?.params.cat;
+    const id = context?.params.city;
     const { allEvents } = await import("/data/data.json");
 
     const data = allEvents.filter(event => event.city === id);
