@@ -42,6 +42,7 @@ const EmailForm = () => {
             inputEmail.current.value = "";
         } catch (error) {
             console.log("Error: ", error);
+
             setMessage({
                 messageText: error.message,
                 type: "error",

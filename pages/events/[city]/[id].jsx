@@ -5,8 +5,7 @@ const EventPage = ({ data }) => <SingleEventPage {...data} />;
 export default EventPage;
 
 export const getStaticPaths = async () => {
-    const data = await import("/data/data.json");
-    const { allEvents } = data;
+    const { allEvents } = await import("/data/data.json");
 
     const allPaths = allEvents.map(({ id, city }) => ({
         params: {
@@ -32,7 +31,7 @@ export const getStaticProps = async context => {
 
     return {
         props: {
-            data: eventData | null,
+            data: eventData || null,
         },
     };
 };
